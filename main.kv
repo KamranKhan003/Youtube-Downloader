@@ -1,0 +1,62 @@
+#:kivy 2.0.0
+
+<MainScreen>:
+    FloatLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+
+        canvas.before:
+            Color:
+                rgba: rgba("#FF5555")
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        Label:
+            id: main_lable
+            text: "Youtube Downloader"
+            font_size: dp(25)
+            size_hint: None, None
+            pos_hint: {"top":0.96,"center_x":0.5}
+            size: self.texture_size
+            blod: True
+            padding: (5,5)
+
+            canvas.before:
+                Color:
+                    rgba: rgba("#000000")
+                Rectangle:
+                    size:self.size
+                    pos: self.pos
+        TextInput:
+            id: txt_input
+            size_hint: (0.82,.06)
+            pos_hint: {"top":0.82,"center_x":0.5}
+            background_color: (1,1,1,1)
+            background_normal: ''
+            bold: True
+            font_size: "20sp"
+            multiline: False
+        Button:
+            id: save_btn
+            text: "Download"
+            background_normal: ''
+            background_color: (0,0,0,1)
+            size_hint: (0.3,.06)
+            pos_hint: {"top":0.70,"center_x":0.5}
+            bold: True
+            font_size: "20sp"
+            on_press: root.download_video(txt_input.text)
+
+        AsyncImage:
+            id: thumbnail
+            size_hint: (0.9,.4)
+            pos_hint: {"top":0.60,"center_x":0.5}
+            source: ''
+
+        Label:
+            id: title
+            text: "video title".title()
+            font_size: "20"
+            bold: True
+            pos_hint: {"top":0.6,"center_x":0.5}
